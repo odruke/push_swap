@@ -6,7 +6,7 @@
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:26:45 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/07 14:26:48 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:34:35 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,21 @@ int	check_valid_char(char *str)
 	}
 	return (1);
 }
+int input_count(char *raw_str)
+{
+	int	i;
+	int	count;
 
+	i = 0;
+	count = 0;
+	while (raw_str[i])
+	{
+		while (raw_str[i] && ft_isblank(raw_str[i]))	
+			i++;
+		if (raw_str[i] && !ft_isblank(raw_str[i]))
+			count++;
+	}
+}
 int parsing(t_inputs *input, int ac, char **av)
 {
 	char	*tmp;

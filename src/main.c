@@ -12,9 +12,16 @@
 
 #include "push_swap.h"
 
+void	init_structs(t_inputs *input)
+{
+	input->raw_str = NULL;
+}
+
 int	main(int ac, char **av)
 {
 	t_inputs *input;
 
+	input = ft_calloc(1, sizeof(input));
+	init_structs(input);
 	parsing(input, ac, av);
 }

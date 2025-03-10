@@ -13,6 +13,6 @@
 
 void	error(void)
 {
-	ft_printf(2, "Error\n");
-	exit();
+	ft_printf_fd(2, "Error\n");
+	exit(errno);
 }

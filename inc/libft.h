@@ -20,6 +20,7 @@
 typedef struct s_list
 {
 	void			*content;
+	int				place;
 	struct s_list	*next;
 }					t_list;
 
@@ -60,7 +61,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	**ft_split(char const *s, char c);
 void	ft_putnbr_fd(int n, int fd);
 
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(void *content, int place);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

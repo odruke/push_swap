@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 # include "ft_printf.h"
 # include "libft.h"
+# include <fcntl.h>
+# include <errno.h>
 
 typedef struct s_node
 {
@@ -28,5 +30,6 @@ typedef struct s_inputs
 }	t_inputs;
 
 void	error(void);
+int     parsing(t_inputs *input, int ac, char **av);
 
 #endif

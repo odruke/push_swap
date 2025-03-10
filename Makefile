@@ -43,7 +43,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) $(FT_PRINTF_LIB) $(LIBFT_LIB) -o $@
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -I$(INCDIR) $(CFLAGS) -c $< -o $@
 
 aux_librarys:
 	make -C $(FT_PRINTF_LIBDIR) all
