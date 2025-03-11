@@ -6,7 +6,7 @@
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:26:45 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/10 19:34:35 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/11 22:49:04 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ int	check_valid_char(char *str)
 	{
 		if (!ft_isdigit(str[i]) || !ft_isblank(str[i]) || str[i] != '+' || str[i] != '-')
 			return (0);
+		if ((str[i] && str[i + 1]) && (str[i] == '+' || str[i] == '-'))
+			if (!ft_isdigit(str[i + 1]))
+				return (0);
+		if (str[i + 1] && ft_isdigit(str[i]))
+			if (str[i + 1] == '+' || str[i + 1] == '-')
+				return (0);
 		i++;
 	}
 	return (1);
@@ -39,7 +45,9 @@ int input_count(char *raw_str)
 		if (raw_str[i] && !ft_isblank(raw_str[i]))
 			count++;
 	}
+	return (count);
 }
+
 int parsing(t_inputs *input, int ac, char **av)
 {
 	char	*tmp;

@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_list	*ft_lstnew(void *content, int place)
+t_stack	*ft_lstnew(int nbr, int place)
 {
-	t_list	*new;
+	t_stack	*new;
 
-	new = malloc(sizeof(t_list));
+	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->content = content;
+	new->nbr = nbr;
 	new->place = place;
 	new->next = NULL;
 	return (new);

@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   fill_lists.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 09:41:16 by odruke-s          #+#    #+#             */
-/*   Updated: 2024/10/25 21:13:46 by odruke-s         ###   ########.fr       */
+/*   Created: 2025/03/11 22:08:50 by odruke-s          #+#    #+#             */
+/*   Updated: 2025/03/11 23:27:39 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-long int	ft_atoi(const char *nb)
+void	fill_stacka(char *raw_str, t_stack **stk_a,)
 {
-	long int	res;
-	long int	sign;
 	int			i;
+	long int	nbr;
+	char		*tmpnbr;
 
-	res = 0;
-	sign = 1;
-	i = 0;
-	if (nb[0] == '0')
-		return (0);
-	while (nb[i] == 32 || (nb[i] >= 9 && nb[i] <= 13))
-		i++;
-	if (nb[i] == '-' || nb[i] == '+')
+	while (*raw_str)
 	{
-		if (nb[i] == '-')
-			sign *= -1;
-		i++;
+		i = 0;
+		while(*raw_str && ft_isblank(*raw_str))
+			raw_str++;
+		while (raw_str[i] && !ft_isblank(raw_str[i]))
+			i++;
+		tmpnbr = ft_strndup(raw_str, i);	
+		nbr = ft_atoi(tmpnbr);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			error();
+		free (tmpnbr);
+		lst_addback(stk_a, lstnew(nbr, 0));
+		raw_str += i;
 	}
-	while (ft_isdigit(nb[i]))
-	{
-		res += nb[i] - 48;
-		if (ft_isdigit(nb[i + 1]))
-			res *= 10;
-		i++;
-	}
-	return (sign * res);
 }

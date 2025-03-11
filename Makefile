@@ -22,10 +22,11 @@ LIBFTDIR = ./libft/
 
 FT_PRINTF_LIB = $(FT_PRINTF_LIBDIR)printf.a
 
-LIBFT_LIB = $(LIBFT_LIB)libft.a
+LIBFT_LIB = $(LIBFTDIR)libft.a
 
 FILES = main\
 		handle_error\
+		parsing\
 
 SRCDIR = ./src/
 

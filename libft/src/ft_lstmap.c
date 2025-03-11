@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *), int place)
+t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *), int place)
 {
-	t_list	*new_lst;
-	t_list	*new_element;
+	t_stack	*new_lst;
+	t_stack	*new_element;
 
 	new_lst = NULL;
 	while (lst)
 	{
-		new_element = ft_lstnew(f(lst->content), place);
+		new_element = ft_lstnew(f(lst->nbr), place);
 		if (!new_element)
 		{
 			ft_lstclear(&new_lst, del);

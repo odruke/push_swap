@@ -17,12 +17,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_stack
 {
-	void			*content;
-	int				place;
-	struct s_list	*next;
-}					t_list;
+    int     nbr;
+    int     place;
+    struct  s_stack  *next;
+}   t_stack;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -61,14 +61,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	**ft_split(char const *s, char c);
 void	ft_putnbr_fd(int n, int fd);
 
-t_list	*ft_lstnew(void *content, int place);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_stack	*ft_lstnew(void *nbr, int place);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+int		ft_lstsize(t_stack *lst);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+void	ft_lstdelone(t_stack *lst, void (*del)(void *));
+void	ft_lstclear(t_stack **lst, void (*del)(void *));
+void	ft_lstiter(t_stack *lst, void (*f)(void *));
+t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *));
 
 #endif

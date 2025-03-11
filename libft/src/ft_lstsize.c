@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_stack *lst)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 	int		i;
 
 	i = 0;

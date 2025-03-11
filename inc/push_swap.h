@@ -17,12 +17,12 @@
 # include <fcntl.h>
 # include <errno.h>
 
-typedef struct s_node
+typedef struct s_stack
 {
-    int             value;
-	struct s_node  *prev;
-    struct s_node  *next;
-}   t_node;
+    int     nbr;
+    int     place;
+    struct  s_stack  *next;
+}   t_stack;
 
 typedef struct s_inputs
 {

@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstiter(t_stack *lst, void (*f)(void *))
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	tmp = lst;
 	if (!tmp)
 		return ;
 	while (tmp)
 	{
-		f(tmp->content);
+		f(tmp->nbr);
 		tmp = tmp->next;
 	}
 }
