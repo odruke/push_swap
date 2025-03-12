@@ -27,6 +27,8 @@ LIBFT_LIB = $(LIBFTDIR)libft.a
 FILES = main\
 		handle_error\
 		parsing\
+		fill_lists\
+		bubble\
 
 SRCDIR = ./src/
 

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_lstiter(t_stack *lst, void (*f)(void *))
+void	ft_lstiter(t_stack *lst, void (*f)(int nbr))
 {
 	t_stack	*tmp;
 

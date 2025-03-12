@@ -6,7 +6,7 @@
 /*   By: odruke-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:41:45 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/07 11:54:43 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/12 10:48:47 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,21 @@
 # include <fcntl.h>
 # include <errno.h>
 
-typedef struct s_stack
+typedef struct s_bubble
 {
-    int     nbr;
-    int     place;
-    struct  s_stack  *next;
-}   t_stack;
+	int		size;
+	int		*array;
+}	t_bubble;
 
 typedef struct s_inputs
 {
 	char *raw_str;
 }	t_inputs;
 
-void	error(void);
-int     parsing(t_inputs *input, int ac, char **av);
+void	error(char *msg);
+void     parsing(t_inputs *input, int ac, char **av);
+int	    check_doubles(t_stack *stk_a);
+void	bubble(t_stack *stk_a);
+void	fill_stacka(char *raw_str, t_stack **stk_a);
 
 #endif

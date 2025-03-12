@@ -6,7 +6,7 @@
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:26:45 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/11 22:49:04 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/12 09:18:10 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_valid_char(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) || !ft_isblank(str[i]) || str[i] != '+' || str[i] != '-')
+		if (!ft_isdigit(str[i]) && !ft_isblank(str[i]) && str[i] != '+' && str[i] != '-')
 			return (0);
 		if ((str[i] && str[i + 1]) && (str[i] == '+' || str[i] == '-'))
 			if (!ft_isdigit(str[i + 1]))
@@ -48,13 +48,18 @@ int input_count(char *raw_str)
 	return (count);
 }
 
-int parsing(t_inputs *input, int ac, char **av)
+void	parsing(t_inputs *input, int ac, char **av)
 {
 	char	*tmp;
 	int		i;
 
 	i = 1;
 	tmp = NULL;
+	if (ac < 3)
+	{
+		free(input);
+		error("less than 3 arguments");
+	}
 	while (i < ac)
 	{
 		tmp = input->raw_str;
@@ -63,10 +68,34 @@ int parsing(t_inputs *input, int ac, char **av)
 		tmp = input->raw_str;
 		input->raw_str = ft_strjoin(input->raw_str, " ");
 		free(tmp);
+		i++;
 	}
 	if (!check_valid_char(input->raw_str))
 	{
-		free(input->raw_str);
-		error();
+		if (input->raw_str)
+			free(input->raw_str);
+		if (input)
+			free(input);
+		error("invalid character");
 	}
+}
+
+int	check_doubles(t_stack *stk_a)
+{
+	t_stack *inner;
+	t_stack *outer;
+
+	outer = stk_a;
+	while (outer)
+	{
+		inner = outer->next;
+		while (inner)
+		{
+			if (outer->nbr == inner->nbr)
+				return (1);
+			inner = inner->next;
+		}
+		outer = outer->next;
+	}
+	return (0);
 }

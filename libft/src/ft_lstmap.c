@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *), int place)
+t_stack	*ft_lstmap(t_stack *lst, int(*f)(int nbr), void (*del)(int nbr), int place)
 {
 	t_stack	*new_lst;
 	t_stack	*new_element;
