@@ -55,11 +55,11 @@ void	parsing(t_inputs *input, int ac, char **av)
 
 	i = 1;
 	tmp = NULL;
-	if (ac < 3)
-	{
-		free(input);
-		error("less than 3 arguments");
-	}
+	if (ac < 2)								//cambiar este check antes de entregar
+	{										//
+		free(input);						//si no hay argumentos el programa se para sin mostrar mensajes
+		error("we need an  argument");		//
+	}										//
 	while (i < ac)
 	{
 		tmp = input->raw_str;

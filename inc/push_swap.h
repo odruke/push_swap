@@ -33,5 +33,9 @@ void     parsing(t_inputs *input, int ac, char **av);
 int	    check_doubles(t_stack *stk_a);
 void	bubble(t_stack *stk_a);
 void	fill_stacka(char *raw_str, t_stack **stk_a);
+int		is_sorted(t_stack *stk_a);
+void 	sa(t_stack **stk_a);
+void 	sb(t_stack **stk_b);
+
 
 #endif

@@ -48,6 +48,10 @@ int	main(int ac, char **av)
 	if (check_doubles(stk_a))
 		error("nbr is repeated");
 	bubble(stk_a);
+	if (is_sorted(stk_a))
+		ft_printf_fd(1,"the stack is sorted!\n");
+	else
+		ft_printf_fd(1,"the stack is NOT sorted!\n");
 	print_list(stk_a);
 }
 

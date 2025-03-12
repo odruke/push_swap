@@ -29,6 +29,8 @@ FILES = main\
 		parsing\
 		fill_lists\
 		bubble\
+		utils\
+		swap\
 
 SRCDIR = ./src/
 
@@ -42,7 +44,7 @@ INC = $(INCDIR)push_swap.h
 
 all: aux_librarys $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(FT_PRINTF_LIB) $(LIBFT_LIB)
 	$(CC) $(OBJ) $(FT_PRINTF_LIB) $(LIBFT_LIB) -o $@
 
 %.o: %.c
