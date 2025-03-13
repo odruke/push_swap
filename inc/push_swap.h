@@ -29,13 +29,16 @@ typedef struct s_inputs
 }	t_inputs;
 
 void	error(char *msg);
-void     parsing(t_inputs *input, int ac, char **av);
+void    parsing(char *raw_input, int ac, char **av);
 int	    check_doubles(t_stack *stk_a);
 void	bubble(t_stack *stk_a);
 void	fill_stacka(char *raw_str, t_stack **stk_a);
 int		is_sorted(t_stack *stk_a);
 void 	sa(t_stack **stk_a);
 void 	sb(t_stack **stk_b);
-
+void	pa(t_stack **stk_1, t_stack **stk_2);
+void	pb(t_stack **stk_2, t_stack **stk_1);
+void	ra(t_stack **stk_a);
+void	rb(t_stack **stk_b);
 
 #endif

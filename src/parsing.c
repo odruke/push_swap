@@ -48,7 +48,7 @@ int input_count(char *raw_str)
 	return (count);
 }
 
-void	parsing(t_inputs *input, int ac, char **av)
+void	parsing(char *raw_input, int ac, char **av)
 {
 	char	*tmp;
 	int		i;
@@ -57,25 +57,23 @@ void	parsing(t_inputs *input, int ac, char **av)
 	tmp = NULL;
 	if (ac < 2)								//cambiar este check antes de entregar
 	{										//
-		free(input);						//si no hay argumentos el programa se para sin mostrar mensajes
+		free(raw_input);						//si no hay argumentos el programa se para sin mostrar mensajes
 		error("we need an  argument");		//
 	}										//
 	while (i < ac)
 	{
-		tmp = input->raw_str;
-		input->raw_str = ft_strjoin(input->raw_str, av[i]);
+		tmp = raw_input;
+		raw_input = ft_strjoin(raw_input, av[i]);
 		free(tmp);
-		tmp = input->raw_str;
-		input->raw_str = ft_strjoin(input->raw_str, " ");
+		tmp = raw_input;
+		raw_input = ft_strjoin(raw_input, " ");
 		free(tmp);
 		i++;
 	}
-	if (!check_valid_char(input->raw_str))
+	if (!check_valid_char(raw_input))
 	{
-		if (input->raw_str)
-			free(input->raw_str);
-		if (input)
-			free(input);
+		if (raw_input)
+			free(raw_input);
 		error("invalid character");
 	}
 }

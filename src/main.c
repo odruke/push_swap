@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-void	init_structs(t_inputs *input)
-{
-	input->raw_str = ft_strdup("");
-}
-
 void	print_list(t_stack *stk_a)
 {
 	if (!stk_a)
@@ -32,19 +27,18 @@ void	print_list(t_stack *stk_a)
 
 int	main(int ac, char **av)
 {
-	t_inputs	*input;
+	char		*raw_input;
 	t_stack		*stk_a;
 	t_stack		*stk_b;
 
 
-	input = ft_calloc(1, sizeof(t_inputs));
+	raw_input = ft_strdup("");
 	stk_a = NULL;
 	stk_b = NULL;
 	(void)stk_b;//eliminar esta linea para la implementacion de radix
-	init_structs(input);
-	parsing(input, ac, av);
-	fill_stacka(input->raw_str, &stk_a);
-	free(input->raw_str);
+	parsing(raw_input, ac, av);
+	fill_stacka(raw_input, &stk_a);
+	free(raw_input);
 	if (check_doubles(stk_a))
 		error("nbr is repeated");
 	bubble(stk_a);
