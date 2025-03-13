@@ -24,13 +24,22 @@ FT_PRINTF_LIB = $(FT_PRINTF_LIBDIR)printf.a
 
 LIBFT_LIB = $(LIBFTDIR)libft.a
 
-FILES = main\
+INSTRUCTIONS_DIR = instructions/
+
+INSTR_FILES = push\
+			rotate\
+			swap\
+
+INSTRUCTIONS = $(addprefix $(INSTRUCTIONS_DIR), $(INSTR_FILES))
+
+FILES = $(INSTRUCTIONS)\
+		main\
 		handle_error\
 		parsing\
 		fill_lists\
 		bubble\
 		utils\
-		swap\
+		radix
 
 SRCDIR = ./src/
 

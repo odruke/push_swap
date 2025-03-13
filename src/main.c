@@ -35,13 +35,18 @@ int	main(int ac, char **av)
 	raw_input = ft_strdup("");
 	stk_a = NULL;
 	stk_b = NULL;
-	(void)stk_b;//eliminar esta linea para la implementacion de radix
-	parsing(raw_input, ac, av);
+	raw_input = parsing(raw_input, ac, av);
 	fill_stacka(raw_input, &stk_a);
 	free(raw_input);
 	if (check_doubles(stk_a))
 		error("nbr is repeated");
 	bubble(stk_a);
+	if (is_sorted(stk_a))
+		ft_printf_fd(1,"the stack is sorted!\n");
+	else
+		ft_printf_fd(1,"the stack is NOT sorted!\n");
+	print_list(stk_a);
+	radix(&stk_a, &stk_b);
 	if (is_sorted(stk_a))
 		ft_printf_fd(1,"the stack is sorted!\n");
 	else

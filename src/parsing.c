@@ -48,7 +48,7 @@ int input_count(char *raw_str)
 	return (count);
 }
 
-void	parsing(char *raw_input, int ac, char **av)
+char	*parsing(char *raw_input, int ac, char **av)
 {
 	char	*tmp;
 	int		i;
@@ -76,6 +76,7 @@ void	parsing(char *raw_input, int ac, char **av)
 			free(raw_input);
 		error("invalid character");
 	}
+	return (raw_input);
 }
 
 int	check_doubles(t_stack *stk_a)
