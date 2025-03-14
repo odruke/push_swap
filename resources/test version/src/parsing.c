@@ -6,7 +6,7 @@
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:26:45 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/14 23:00:03 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/12 09:18:10 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	check_valid_char(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && !ft_isblank(str[i])
-			&& str[i] != '+' && str[i] != '-')
+		if (!ft_isdigit(str[i]) && !ft_isblank(str[i]) && str[i] != '+' && str[i] != '-')
 			return (0);
 		if ((str[i] && str[i + 1]) && (str[i] == '+' || str[i] == '-'))
 			if (!ft_isdigit(str[i + 1]))
@@ -32,8 +31,7 @@ int	check_valid_char(char *str)
 	}
 	return (1);
 }
-
-int	input_count(char *raw_str)
+int input_count(char *raw_str)
 {
 	int	i;
 	int	count;
@@ -42,7 +40,7 @@ int	input_count(char *raw_str)
 	count = 0;
 	while (raw_str[i])
 	{
-		while (raw_str[i] && ft_isblank(raw_str[i]))
+		while (raw_str[i] && ft_isblank(raw_str[i]))	
 			i++;
 		if (raw_str[i] && !ft_isblank(raw_str[i]))
 			count++;
@@ -57,15 +55,13 @@ char	*parsing(char *raw_input, int ac, char **av)
 
 	i = 1;
 	tmp = NULL;
-	if (ac < 2)
-		error(raw_input);
+	if (ac < 2)								//cambiar este check antes de entregar
+	{										//
+		free(raw_input);						//si no hay argumentos el programa se para sin mostrar mensajes
+		error("we need an  argument");		//
+	}										//
 	while (i < ac)
 	{
-		if (av[i][0] == '\0')
-		{
-			i++;
-			continue ;
-		}
 		tmp = raw_input;
 		raw_input = ft_strjoin(raw_input, av[i]);
 		free(tmp);
@@ -75,14 +71,18 @@ char	*parsing(char *raw_input, int ac, char **av)
 		i++;
 	}
 	if (!check_valid_char(raw_input))
-		error(raw_input);
+	{
+		if (raw_input)
+			free(raw_input);
+		error("invalid character");
+	}
 	return (raw_input);
 }
 
 int	check_doubles(t_stack *stk_a)
 {
-	t_stack	*inner;
-	t_stack	*outer;
+	t_stack *inner;
+	t_stack *outer;
 
 	outer = stk_a;
 	while (outer)

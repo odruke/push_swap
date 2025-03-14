@@ -34,27 +34,31 @@ static int	get_max_bits(t_stack **stack)
 
 void	radix(t_stack **stk_a, t_stack **stk_b)
 {
-	t_radix	radix;
+	t_stack	*head_a;
+	int		i;
+	int		j;
+	int		size;
+	int		max_bits;
 
 	if (!(*stk_a))
 		return ;
-	radix.i = 0;
-	radix.head_a = *stk_a;
-	radix.size = ft_lstsize(radix.head_a);
-	radix.max_bits = get_max_bits(stk_a);
-	while (radix.i < radix.max_bits)
+	i = 0;
+	head_a = *stk_a;
+	size = ft_lstsize(head_a);
+	max_bits = get_max_bits(stk_a);
+	while (i < max_bits)
 	{
-		radix.j = 0;
-		while (radix.j++ < radix.size)
+		j = 0;
+		while (j++ < size)
 		{
-			radix.head_a = *stk_a;
-			if (((radix.head_a->place >> radix.i) & 1) == 1)
+			head_a = *stk_a;
+			if (((head_a->place >> i) & 1) == 1)
 				ra(stk_a);
 			else
 				pb(stk_a, stk_b);
 		}
 		while (ft_lstsize(*stk_b) != 0)
 			pa(stk_a, stk_b);
-		radix.i++;
+		i++;
 	}	
 }

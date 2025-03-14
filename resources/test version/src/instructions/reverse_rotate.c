@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 23:01:33 by odruke-s          #+#    #+#             */
-/*   Updated: 2024/10/07 23:36:03 by odruke-s         ###   ########.fr       */
+/*   Created: 2025/03/14 12:04:25 by odruke-s          #+#    #+#             */
+/*   Updated: 2025/03/14 22:39:31 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_lstmap(t_stack *lst, int(*f)(int nbr), void (*del)(int nbr), int place)
+static void	reverse_rotate(t_stack **stk_a)
 {
-	t_stack	*new_lst;
-	t_stack	*new_element;
+	t_stack	*tmp;
+	t_stack	*tail;
 
-	new_lst = NULL;
-	while (lst)
-	{
-		new_element = ft_lstnew(f(lst->nbr), place);
-		if (!new_element)
-		{
-			ft_lstclear(&new_lst, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_lst, new_element);
-		lst = lst->next;
-	}
-	return (new_lst);
+	if (!(*stk_a) || !(*stk_a)->next)
+		return ;
+	tail = ft_lstlast(*stk_a);
+	tmp = *stk_a;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	tail->next = *stk_a;
+	tmp->next = NULL;
+	*stk_a = tail;
+}
+
+void	rra(t_stack **stk_a)
+{
+	reverse_rotate(stk_a);
+	ft_printf_fd(1, "rra\n");
+}
+
+void	rrb(t_stack **stk_b)
+{
+	reverse_rotate(stk_b);
+	ft_printf_fd(1, "rrb\n");
 }

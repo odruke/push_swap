@@ -6,7 +6,7 @@
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:09:04 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/12 11:05:35 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:37:15 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 typedef struct s_stack
 {
-    int     nbr;
-    int     place;
-    struct  s_stack  *next;
-}   t_stack;
+	int					nbr;
+	int					place;
+	struct s_stack		*next;
+}						t_stack;
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -68,7 +68,5 @@ void		ft_lstadd_back(t_stack **lst, t_stack *new);
 void		ft_lstdelone(t_stack *lst, void (*del)(int nbr));
 void		ft_lstclear(t_stack **lst, void (*del)(int));
 void		ft_lstiter(t_stack *lst, void (*f)(int nbr));
-t_stack	    *ft_lstmap(t_stack *lst, int(*f)(int nbr), void (*del)(int nbr), int place);
 
 #endif
- 

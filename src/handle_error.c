@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	error(char *msg)
+void	error(char *raw_input)
 {
-	ft_printf_fd(2, "%s\n", msg);// eliminar para la version de evaluacion
+	if (raw_input)
+		free (raw_input);
 	ft_printf_fd(2, "Error\n");
-	(void)msg;
 	exit(errno);
 }

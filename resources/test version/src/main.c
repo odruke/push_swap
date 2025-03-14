@@ -6,11 +6,24 @@
 /*   By: odruke-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:40:52 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/14 22:53:55 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/14 22:48:40 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_list(t_stack *stk_a)
+{
+	if (!stk_a)
+	{
+		ft_printf_fd(1, "la lista esta vacia\n");
+	}
+	while (stk_a)
+	{
+		ft_printf_fd(1, "nbr= %i\nplace= %i\n------\n", stk_a->nbr, stk_a->place);
+		stk_a = stk_a->next;
+	}
+}
 
 static void	sort(t_stack **stk_a, t_stack **stk_b)
 {
@@ -32,16 +45,21 @@ int	main(int ac, char **av)
 	raw_input = ft_strdup("");
 	stk_a = NULL;
 	stk_b = NULL;
-	if (av[1][0] == '\0')
-		error(raw_input);
 	raw_input = parsing(raw_input, ac, av);
 	fill_stacka(raw_input, &stk_a);
 	free(raw_input);
 	if (check_doubles(stk_a))
-		error(NULL);
+		error("nbr is repeated");
 	bubble(stk_a);
 	if (is_sorted(stk_a))
-		return (0);
-	sort(&stk_a, &stk_b);
-	free_stack(&stk_a);
+		ft_printf_fd(1, "the stack is sorted!\n");
+	else
+		ft_printf_fd(1, "the stack is NOT sorted!\n");
+	if (!is_sorted(stk_a))
+		sort(&stk_a, &stk_b);
+	if (is_sorted(stk_a))
+		ft_printf_fd(1, "the stack is sorted!\n");
+	else
+		ft_printf_fd(1, "the stack is NOT sorted!\n");
+	print_list(stk_a);
 }

@@ -1,31 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odruke-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 22:28:36 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/14 22:28:41 by odruke-s         ###   ########.fr       */
+/*   Created: 2025/03/12 20:44:09 by odruke-s          #+#    #+#             */
+/*   Updated: 2025/03/14 22:44:50 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strndup(const char *s, int n)
+int	is_sorted(t_stack *stk_a)
 {
-	char	*res;
-	int		i;
-
-	i = 0;
-	res = malloc(sizeof(char) * (n + 1));
-	if (res == NULL)
-		return (NULL);
-	while (i < n)
+	if (!stk_a)
+		return (1);
+	while (stk_a->next)
 	{
-		res[i] = s[i];
-		i++;
+		if (stk_a->place > stk_a->next->place)
+			return (0);
+		stk_a = stk_a->next;
 	}
-	res[i] = '\0';
-	return (res);
+	return (1);
+}
+
+int	min_pos(int *min, t_stack *stk_a)
+{
+	int		i;
+	int		pos;
+	t_stack	*tmp;
+
+	i = 1;
+	pos = 1;
+	tmp = stk_a;
+	while (tmp->next)
+	{
+		i++;
+		tmp = tmp->next;
+		if (*min > tmp->place)
+		{
+			*min = tmp->place;
+			pos = i;
+		}
+	}
+	return (pos);
 }

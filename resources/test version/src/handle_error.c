@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: odruke-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 22:28:36 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/14 22:28:41 by odruke-s         ###   ########.fr       */
+/*   Created: 2025/03/06 23:12:58 by odruke-s          #+#    #+#             */
+/*   Updated: 2025/03/12 15:18:12 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-#include "libft.h"
-
-char	*ft_strndup(const char *s, int n)
+void	error(char *msg)
 {
-	char	*res;
-	int		i;
-
-	i = 0;
-	res = malloc(sizeof(char) * (n + 1));
-	if (res == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		res[i] = s[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
+	ft_printf_fd(2, "%s\n", msg);// eliminar para la version de evaluacion
+	ft_printf_fd(2, "Error\n");
+	(void)msg;
+	exit(errno);
 }

@@ -29,6 +29,7 @@ INSTRUCTIONS_DIR = instructions/
 INSTR_FILES = push\
 			rotate\
 			swap\
+			reverse_rotate\
 
 INSTRUCTIONS = $(addprefix $(INSTRUCTIONS_DIR), $(INSTR_FILES))
 
@@ -39,7 +40,8 @@ FILES = $(INSTRUCTIONS)\
 		fill_lists\
 		bubble\
 		utils\
-		radix
+		radix\
+		sort_low
 
 SRCDIR = ./src/
 
