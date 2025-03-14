@@ -6,7 +6,7 @@
 /*   By: odruke-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 23:34:38 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/13 23:43:08 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/14 11:14:45 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	radix(t_stack **stk_a, t_stack **stk_b)
 	int		size;
 	int		max_bits;
 
+	if (!(*stk_a))
+		return ;
 	i = 0;
 	head_a = *stk_a;
 	size = ft_lstsize(head_a);

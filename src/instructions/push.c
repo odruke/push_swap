@@ -29,7 +29,7 @@ void	pb(t_stack **stk_2, t_stack **stk_1)
 {
 	t_stack *tmp;
 
-	if (!*stk_1)
+	if (!*stk_2)
 		return ;
 	tmp = (*stk_2)->next;
 	(*stk_2)->next = *stk_1;
