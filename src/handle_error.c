@@ -16,5 +16,5 @@ void	error(char *raw_input)
 	if (raw_input)
 		free (raw_input);
 	ft_printf_fd(2, "Error\n");
-	exit(errno);
+	exit(0);
 }

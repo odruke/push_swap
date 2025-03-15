@@ -25,7 +25,6 @@ typedef struct s_bubble
 
 typedef struct s_radix
 {
-	t_stack	*head_a;
 	int		i;
 	int		j;
 	int		size;

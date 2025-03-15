@@ -6,20 +6,36 @@
 /*   By: odruke-s <odruke-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:41:16 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/14 22:19:38 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:21:27 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long int	ft_atoi(const char *nb)
+static long int	convert(int sign, const char *nb)
 {
 	long int	res;
-	long int	sign;
 
 	res = 0;
+	while (ft_isdigit(*nb))
+	{
+		if (sign > 0 && res > (LONG_MAX - (*nb - '0')) / 10)
+			return (LONG_MAX);
+		if (sign < 0 && (unsigned long)res
+			> ((unsigned long)(-(LONG_MIN + (*nb - '0')))) / 10)
+			return (LONG_MIN);
+		res = res * 10 + (*nb - '0');
+		nb++;
+	}
+	return (res * sign);
+}
+
+long int	ft_atoi(const char *nb)
+{
+	long int	sign;
+
 	sign = 1;
-	if (*nb == '0' && !(*nb + 1))
+	if (*nb == '0' && (*nb + 1) == '\0')
 		return (0);
 	while (*nb == 32 || (*nb >= 9 && *nb <= 13))
 		nb++;
@@ -29,12 +45,7 @@ long int	ft_atoi(const char *nb)
 			sign *= -1;
 		nb++;
 	}
-	if (*nb == '0')
+	while (*nb == '0')
 		nb++;
-	while (ft_isdigit(*nb))
-	{
-		res = res * 10 + (*nb - '0');
-		nb++;
-	}
-	return (sign * res);
+	return (convert(sign, nb));
 }

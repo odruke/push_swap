@@ -6,7 +6,7 @@
 /*   By: odruke-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 20:44:09 by odruke-s          #+#    #+#             */
-/*   Updated: 2025/03/15 00:00:03 by odruke-s         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:32:58 by odruke-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 
+	if (!stack || !*stack)
+		return ;
 	while (*stack)
 	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
+	*stack = NULL;
 }
